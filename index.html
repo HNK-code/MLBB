@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Sunrise LOL: Wild Rift</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --black: #000000;
+            --dark-gray: #222222;
+            --light-gray: #444444;
+            --white: #FFFFFF;
+            --red: #FF3333;
+            --card: rgba(30, 30, 30, 0.85);
+            --text: #EEEEEE;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: url('https://i.pinimg.com/736x/5b/a8/d2/5ba8d26f622cd1a92307f181fce736a8.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        
+        body:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--black), var(--dark-gray));
+            color: var(--gold);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: relative;
+            border: 2px solid var(--gold);
+        }
+        
+        h1 {
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            margin-bottom: 10px;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .community-link {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 12px 24px;
+            background-color: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1.1em;
+            border: 2px solid var(--black);
+        }
+        
+        .community-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            background-color: #FFC800;
+        }
+        
+        .contacts, .rules, .notes {
+            background-color: var(--card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--gold);
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item:before {
+            content: "•";
+            margin-right: 10px;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        
+        .rules-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .rule-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            font-size: clamp(0.9em, 3vw, 1em);
+            border-bottom: 1px dashed var(--gold);
+            padding-bottom: 15px;
+        }
+        
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rule-title {
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rule-title:before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .punishment {
+            color: var(--red);
+            font-weight: bold;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .notes-title {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: var(--gold);
+            padding-top: 20px;
+            border-top: 1px dashed var(--gold);
+        }
+        
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            color: #FFC800;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            .rules, .contacts, .notes {
+                padding: 15px;
+            }
+            
+            .community-link {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Чат | 𝙶𝚘𝚕𝚍𝚎𝚗 𝚜𝚞𝚗𝚛𝚒𝚜𝚎 𝙻𝙾𝙻: 𝚆𝚒𝚕𝚍 𝚁𝚒𝚏𝚝</h1>
+        
+        <a href="https://t.me/underdogaosiaMLBB" class="community-link" target="_blank">Присоединиться к сообществу</a>
+    </header>
+
+    <div class="contacts">
+        <div class="contact-item"><strong>Создатель:</strong> @Angellll27</div>
+        <div class="contact-item"><strong>Заместитель:</strong> @underdogaosia</div>
+        <div class="contact-item"><strong>Правила:</strong> в закрепе чата</div>
+    </div>
+
+    <div class="rules">
+        <div class="rules-title">📜 Правила сообщества 📜</div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🚫 Запрещено:</div>
+            <p>Осуждение, оскорбление, высмеивание или унижение касательно чьей-либо ориентации.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🔥 Конфликты и ссоры:</div>
+            <p>Разводить конфликты или споры запрещено. Дружеский кибербуллинг допустим, если обе стороны не против.</p>
+            <div class="punishment">Карается: ⚠️ Варн (при продолжении — 🔇 Мут на 30 минут).</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">❌ Провокации:</div>
+            <p>Провокация администраторов или участников чата запрещена.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">💬 Спам и флуд:</div>
+            <p>Запрещена отправка сообщений, GIF, RP или стикеров более 5 раз в короткий промежуток времени.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🔞 Материалы 18+:</div>
+            <p>Запрещены любые материалы, связанные с контентом 18+.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🚫 Строго запрещено:</div>
+            <p>Распространение расчлененки, видео/фото убийств или смерти, а также детской порнографии.</p>
+            <div class="punishment">Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🔗 Реклама и ссылки:</div>
+            <p>Запрещены любые ссылки и реклама, если только админ не дал разрешение.</p>
+            <div class="punishment">Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">⚖️ Политика, религия и язык:</div>
+            <p>Темы политики, языка, религиозных и национальных интересов запрещены.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">🚷 Шутки про семью:</div>
+            <p>Любые шутки про семью или переход на неё в спорах запрещены.</p>
+            <div class="punishment">Карается: 🚫 Бан.</div>
+        </div>
+        
+        <div class="rule-item">
+            <div class="rule-title">👮‍♂️ Действия администрации:</div>
+            <p>Публичное обсуждение действий администрации запрещено. Все вопросы — в ЛС.</p>
+            <div class="punishment">Карается: ⚠️ Варн.</div>
+        </div>
+    </div>
+
+    <div class="notes">
+        <div class="notes-title">📌 Примечания:</div>
+        <p>- При получении 3 варнов за неделю — 🚫 Бан.</p>
+        <p>- Ставки на муты запрещены, исключение — присутствие Дениса Радченко и его одобрение.</p>
+        <p>- Все спорные ситуации, не прописанные в правилах, решаются на усмотрение администрации.</p>
+    </div>
+
+    <footer>
+        © 2023 Golden Sunrise LOL: Wild Rift. Все права защищены.<br>
+        <a href="https://t.me/underdogaosiaMLBB" target="_blank">Telegram-чат</a> | 
+        <a href="https://t.me/Angellll27" target="_blank">Создатель</a> | 
+        <a href="https://t.me/underdogaosia" target="_blank">Заместитель</a>
+    </footer>
+</body>
+</html>
