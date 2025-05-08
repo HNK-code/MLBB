@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝙼𝙻𝙱𝙱</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>𝙼𝙻𝙱𝙱 | Golden Sunrise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --gold: #FFD700;
             --gold-light: #FFEC8B;
+            --gold-dark: #FFC600;
             --black: #000000;
             --dark: #121212;
             --darker: #0A0A0A;
             --red: #FF3333;
+            --green: #4CAF50;
+            --blue: #2196F3;
             --card: rgba(20, 20, 20, 0.9);
             --text: #F0F0F0;
+            --text-light: #E0E0E0;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
         
         * {
@@ -32,6 +39,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            scroll-behavior: smooth;
         }
         
         body::before {
@@ -41,12 +49,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(18,18,18,0.9) 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(18,18,18,0.95) 100%);
             z-index: -1;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
             position: relative;
@@ -98,12 +106,14 @@
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1.5rem;
             color: var(--gold);
             text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
             position: relative;
             display: inline-block;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
         
         h1::after {
@@ -112,10 +122,20 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 3px;
-            background: var(--gold);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
         }
         
         /* Эффектная кнопка */
@@ -163,6 +183,7 @@
         .community-link:hover {
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            color: var(--darker);
         }
         
         .community-link:active {
@@ -178,20 +199,22 @@
         }
         
         /* Стильные карточки */
-        .contacts, .rules, .notes {
+        .contacts, .rules, .notes, .stats {
             background: var(--card);
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.2);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         
-        .contacts:hover, .rules:hover, .notes:hover {
+        .contacts:hover, .rules:hover, .notes:hover, .stats:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            box-shadow: var(--shadow-hover);
             border-color: rgba(255, 215, 0, 0.4);
         }
         
@@ -212,8 +235,36 @@
             font-size: 1.2rem;
         }
         
+        /* Статистика сообщества */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(20,20,20,0.9) 100%);
+        }
+        
+        .stat-item {
+            padding: 1rem;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+        
         /* Анимация правил */
-        .rules-title {
+        .rules-title, .notes-title {
             text-align: center;
             color: var(--gold);
             margin-bottom: 2rem;
@@ -224,7 +275,7 @@
             width: 100%;
         }
         
-        .rules-title::before, .rules-title::after {
+        .rules-title::before, .rules-title::after, .notes-title::before, .notes-title::after {
             content: '✧';
             position: absolute;
             top: 50%;
@@ -234,12 +285,12 @@
             opacity: 0.6;
         }
         
-        .rules-title::before {
-            left: 0;
+        .rules-title::before, .notes-title::before {
+            left: 10%;
         }
         
-        .rules-title::after {
-            right: 0;
+        .rules-title::after, .notes-title::after {
+            right: 10%;
         }
         
         .rule-item {
@@ -345,6 +396,37 @@
             width: 100%;
         }
         
+        /* Кнопка наверх */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: var(--gold-light);
+        }
+        
         /* Адаптивность */
         @media (max-width: 768px) {
             .container {
@@ -355,13 +437,26 @@
                 padding: 1.5rem;
             }
             
-            .rules, .contacts, .notes {
+            .rules, .contacts, .notes, .stats {
                 padding: 1.5rem;
             }
             
             .community-link {
                 padding: 0.8rem 1.8rem;
                 font-size: 1rem;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+                padding: 0.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .rules-title::before, .rules-title::after, .notes-title::before, .notes-title::after {
+                display: none;
             }
         }
         
@@ -397,14 +492,137 @@
                 opacity: 0;
             }
         }
+        
+        /* Анимация загрузки */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-content {
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-logo {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 2px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-bar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background: var(--gold);
+            animation: loading 2s infinite ease-in-out;
+        }
+        
+        @keyframes loading {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+        
+        /* Новые элементы - табы */
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .tab.active {
+            color: var(--gold);
+        }
+        
+        .tab.active::after {
+            width: 100%;
+        }
+        
+        .tab:hover {
+            color: var(--gold);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
+    <!-- Прелоадер -->
+    <div class="loading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h3>Golden Sunrise</h3>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+    
     <div class="particles" id="particles"></div>
+    
+    <!-- Кнопка наверх -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
     
     <div class="container">
         <header>
             <h1>Чат | 𝙶𝚘𝚕𝚍𝚎𝚗 𝚜𝚞𝚗𝚛𝚒𝚜𝚎 𝙻𝙾𝙻: 𝚆𝚒𝚕𝚍 𝚁𝚒𝚏𝚝</h1>
+            <p class="subtitle">Сообщество для любителей Wild Rift, где царит дружеская атмосфера и золотые правила</p>
             <a href="https://t.me/+oev7VcKe3QEwZjFi" class="community-link" target="_blank">
                 <svg class="telegram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
@@ -413,97 +631,159 @@
             </a>
         </header>
 
-        <div class="contacts">
-            <div class="contact-item"><strong>Создатель:</strong> @Angellll27</div>
-            <div class="contact-item"><strong>Заместитель:</strong> @underdogaosia</div>
-            <div class="contact-item"><strong>Канал:</strong> <a href="https://t.me/underdogaosiaMLBB" target="_blank">@underdogaosiaMLBB</a></div>
-        </div>
-
-        <div class="rules">
-            <div class="rules-title">📜 Правила сообщества 📜</div>
-            
-            <div class="rule-item" style="animation-delay: 0.1s">
-                <div class="rule-title">🚫 Запрещено:</div>
-                <p>Осуждение, оскорбление, высмеивание или унижение касательно чьей-либо ориентации.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
+        <!-- Блок статистики -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="membersCount">500+</div>
+                <div class="stat-label">Участников</div>
             </div>
-            
-            <div class="rule-item" style="animation-delay: 0.2s">
-                <div class="rule-title">🔥 Конфликты и ссоры:</div>
-                <p>Разводить конфликты или споры запрещено. Дружеский кибербуллинг допустим, если обе стороны не против.</p>
-                <div class="punishment">Карается: ⚠️ Варн (при продолжении — 🔇 Мут на 30 минут).</div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Активность</div>
             </div>
-            
-            <div class="rule-item" style="animation-delay: 0.3s">
-                <div class="rule-title">❌ Провокации:</div>
-                <p>Провокация администраторов или участников чата запрещена.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Дружелюбие</div>
             </div>
-            
-            <div class="rule-item" style="animation-delay: 0.4s">
-                <div class="rule-title">💬 Спам и флуд:</div>
-                <p>Запрещена отправка сообщений, GIF, RP или стикеров более 5 раз в короткий промежуток времени.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 0.5s">
-                <div class="rule-title">🔞 Материалы 18+:</div>
-                <p>Запрещены любые материалы, связанные с контентом 18+.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 0.6s">
-                <div class="rule-title">🚫 Строго запрещено:</div>
-                <p>Распространение расчлененки, видео/фото убийств или смерти, а также детской порнографии.</p>
-                <div class="punishment">Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 0.7s">
-                <div class="rule-title">🔗 Реклама и ссылки:</div>
-                <p>Запрещены любые ссылки и реклама, если только админ не дал разрешение.</p>
-                <div class="punishment">Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 0.8s">
-                <div class="rule-title">⚖️ Политика, религия и язык:</div>
-                <p>Темы политики, языка, религиозных и национальных интересов запрещены.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 0.9s">
-                <div class="rule-title">🚷 Шутки про семью:</div>
-                <p>Любые шутки про семью или переход на неё в спорах запрещены.</p>
-                <div class="punishment">Карается: 🚫 Бан.</div>
-            </div>
-            
-            <div class="rule-item" style="animation-delay: 1s">
-                <div class="rule-title">👮‍♂️ Действия администрации:</div>
-                <p>Публичное обсуждение действий администрации запрещено. Все вопросы — в ЛС.</p>
-                <div class="punishment">Карается: ⚠️ Варн.</div>
+            <div class="stat-item">
+                <div class="stat-number">2023</div>
+                <div class="stat-label">Основан</div>
             </div>
         </div>
 
-        <div class="notes">
-            <div class="notes-title">📌 Примечания:</div>
-            <p>- При получении 3 варнов за неделю — 🚫 Бан.</p>
-            <p>- Ставки на муты запрещены, исключение — присутствие Дениса Радченко и его одобрение.</p>
-            <p>- Все спорные ситуации, не прописанные в правилах, решаются на усмотрение администрации.</p>
+        <!-- Табы для разделов -->
+        <div class="tabs">
+            <div class="tab active" data-tab="contacts">Контакты</div>
+            <div class="tab" data-tab="rules">Правила</div>
+            <div class="tab" data-tab="notes">Примечания</div>
+        </div>
+
+        <!-- Контент табов -->
+        <div class="tab-content active" id="contacts">
+            <div class="contacts">
+                <div class="contact-item"><strong><i class="fas fa-crown"></i> Создатель:</strong> @Angellll27</div>
+                <div class="contact-item"><strong><i class="fas fa-star"></i> Заместитель:</strong> @underdogaosia</div>
+                <div class="contact-item"><strong><i class="fas fa-newspaper"></i> Канал:</strong> <a href="https://t.me/underdogaosiaMLBB" target="_blank">@underdogaosiaMLBB</a></div>
+                <div class="contact-item"><strong><i class="fas fa-robot"></i> Бот:</strong> @GoldenSunriseBot</div>
+                <div class="contact-item"><strong><i class="fas fa-users"></i> Чат:</strong> <a href="https://t.me/+oev7VcKe3QEwZjFi" target="_blank">Golden Sunrise Chat</a></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="rules">
+            <div class="rules">
+                <div class="rules-title">📜 Правила сообщества 📜</div>
+                
+                <div class="rule-item" style="animation-delay: 0.1s">
+                    <div class="rule-title">🚫 Запрещено:</div>
+                    <p>Осуждение, оскорбление, высмеивание или унижение касательно чьей-либо ориентации.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.2s">
+                    <div class="rule-title">🔥 Конфликты и ссоры:</div>
+                    <p>Разводить конфликты или споры запрещено. Дружеский кибербуллинг допустим, если обе стороны не против.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн (при продолжении — 🔇 Мут на 30 минут).</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.3s">
+                    <div class="rule-title">❌ Провокации:</div>
+                    <p>Провокация администраторов или участников чата запрещена.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.4s">
+                    <div class="rule-title">💬 Спам и флуд:</div>
+                    <p>Запрещена отправка сообщений, GIF, RP или стикеров более 5 раз в короткий промежуток времени.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.5s">
+                    <div class="rule-title">🔞 Материалы 18+:</div>
+                    <p>Запрещены любые материалы, связанные с контентом 18+.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.6s">
+                    <div class="rule-title">🚫 Строго запрещено:</div>
+                    <p>Распространение расчлененки, видео/фото убийств или смерти, а также детской порнографии.</p>
+                    <div class="punishment"><i class="fas fa-gavel"></i> Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.7s">
+                    <div class="rule-title">🔗 Реклама и ссылки:</div>
+                    <p>Запрещены любые ссылки и реклама, если только админ не дал разрешение.</p>
+                    <div class="punishment"><i class="fas fa-gavel"></i> Карается: 🔇 Мут на 2 часа + ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.8s">
+                    <div class="rule-title">⚖️ Политика, религия и язык:</div>
+                    <p>Темы политики, языка, религиозных и национальных интересов запрещены.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 0.9s">
+                    <div class="rule-title">🚷 Шутки про семью:</div>
+                    <p>Любые шутки про семью или переход на неё в спорах запрещены.</p>
+                    <div class="punishment"><i class="fas fa-ban"></i> Карается: 🚫 Бан.</div>
+                </div>
+                
+                <div class="rule-item" style="animation-delay: 1s">
+                    <div class="rule-title">👮‍♂️ Действия администрации:</div>
+                    <p>Публичное обсуждение действий администрации запрещено. Все вопросы — в ЛС.</p>
+                    <div class="punishment"><i class="fas fa-exclamation-triangle"></i> Карается: ⚠️ Варн.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="notes">
+            <div class="notes">
+                <div class="notes-title">📌 Важная информация</div>
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-info-circle"></i> Основные положения:</div>
+                    <p>- При получении 3 варнов за неделю — 🚫 Бан.</p>
+                    <p>- Ставки на муты запрещены, исключение — присутствие Дениса Радченко и его одобрение.</p>
+                    <p>- Все спорные ситуации, не прописанные в правилах, решаются на усмотрение администрации.</p>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-trophy"></i> Турниры и события:</div>
+                    <p>- Ежемесячные турниры с призами для активных участников.</p>
+                    <p>- Регулярные ивенты и конкурсы с внутриигровыми наградами.</p>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-heart"></i> Рекомендации:</div>
+                    <p>- Уважайте друг друга и поддерживайте дружескую атмосферу.</p>
+                    <p>- Помогайте новичкам и делитесь своим опытом.</p>
+                    <p>- Сообщайте администрации о нарушителях правил.</p>
+                </div>
+            </div>
         </div>
 
         <footer>
             © 2023 Golden Sunrise LOL: Wild Rift. Все права защищены.<br>
-            <a href="https://t.me/+oev7VcKe3QEwZjFi" target="_blank">Telegram-чат</a> | 
-            <a href="https://t.me/underdogaosiaMLBB" target="_blank">Канал</a> | 
-            <a href="https://t.me/Angellll27" target="_blank">Создатель</a> | 
-            <a href="https://t.me/underdogaosia" target="_blank">Заместитель</a>
+            <a href="https://t.me/+oev7VcKe3QEwZjFi" target="_blank"><i class="fab fa-telegram"></i> Telegram-чат</a> | 
+            <a href="https://t.me/underdogaosiaMLBB" target="_blank"><i class="fas fa-newspaper"></i> Канал</a> | 
+            <a href="https://t.me/Angellll27" target="_blank"><i class="fas fa-crown"></i> Создатель</a> | 
+            <a href="https://t.me/underdogaosia" target="_blank"><i class="fas fa-star"></i> Заместитель</a>
         </footer>
     </div>
 
     <script>
+        // Прелоадер
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loading').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+        
         // Создаем частицы для фона
         document.addEventListener('DOMContentLoaded', function() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const particleCount = 50;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -531,6 +811,72 @@
             ruleItems.forEach((item, index) => {
                 item.style.animationDelay = `${index * 0.1 + 0.1}s`;
             });
+            
+            // Кнопка наверх
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Табы
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Удаляем активный класс у всех табов и контента
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Добавляем активный класс текущему табу и контенту
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Анимация счетчика
+            function animateCounter(element, target, duration = 2000) {
+                const start = 0;
+                const increment = target / (duration / 16);
+                let current = start;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                        element.textContent = target + '+';
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                }, 16);
+            }
+            
+            // Запускаем анимацию счетчика при прокрутке до блока
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(document.getElementById('membersCount'), 500);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(document.querySelector('.stats'));
         });
     </script>
 </body>
