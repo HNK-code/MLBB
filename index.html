@@ -634,10 +634,6 @@
         <!-- Блок статистики -->
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-number" id="membersCount">500+</div>
-                <div class="stat-label">Участников</div>
-            </div>
-            <div class="stat-item">
                 <div class="stat-number">24/7</div>
                 <div class="stat-label">Активность</div>
             </div>
@@ -847,36 +843,6 @@
                     document.getElementById(tabId).classList.add('active');
                 });
             });
-            
-            // Анимация счетчика
-            function animateCounter(element, target, duration = 2000) {
-                const start = 0;
-                const increment = target / (duration / 16);
-                let current = start;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        clearInterval(timer);
-                        current = target;
-                        element.textContent = target + '+';
-                    } else {
-                        element.textContent = Math.floor(current);
-                    }
-                }, 16);
-            }
-            
-            // Запускаем анимацию счетчика при прокрутке до блока
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(document.getElementById('membersCount'), 500);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(document.querySelector('.stats'));
         });
     </script>
 </body>
